@@ -1,0 +1,15 @@
+{
+  "name": "food-delivery-route-system",
+  "private": true,
+  "type": "module",
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev": "concurrently -k -n api,optimizer,web -c green,blue,magenta \"npm:dev --workspace backend\" \"npm:optimizer\" \"npm:dev --workspace frontend\"",
+    "optimizer": "node scripts/run-optimizer.js",
+    "build": "npm run build --workspace frontend",
+    "test": "node --test backend/test/*.test.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
