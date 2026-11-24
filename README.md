@@ -27,6 +27,7 @@ The browser UI is a React single-page application. An Express API owns order and
 ## Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Architecture and request flow](#architecture-and-request-flow)
 - [Route optimization](#route-optimization)
 - [Technology stack](#technology-stack)
@@ -66,6 +67,33 @@ The browser UI is a React single-page application. An Express API owns order and
 - Road distance and travel-time matrices use OSRM when it responds with a valid matrix.
 - If OSRM is unavailable, the optimizer labels its estimate as simulated and uses a straight-line distance multiplied by a road factor. It does not draw invented road geometry or turn instructions.
 - The frontend uses OpenStreetMap tiles. Internet access is needed to load map tiles and to use public OSRM endpoints.
+
+## Screenshots
+
+These screenshots are from the running local demo and use seeded sample data. The rider view shows the 20 available delivery offers.
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="./docs/screenshots/dispatcher-overview.png" alt="Dispatcher overview with order metrics, fleet map, and recent orders" width="100%">
+      <p align="center"><strong>Dispatcher overview</strong><br>Order metrics, fleet map, order volume, and recent activity.</p>
+    </td>
+    <td width="50%">
+      <img src="./docs/screenshots/live-operations.png" alt="Live operations map with delivery agents, restaurants, and open orders" width="100%">
+      <p align="center"><strong>Live fleet operations</strong><br>Agent availability and current Greater Noida map.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="./docs/screenshots/rider-dashboard.png" alt="Rider app showing 20 available delivery offers with estimated solo payout" width="100%">
+      <p align="center"><strong>Rider delivery offers</strong><br>20 pending orders sorted by estimated solo take-home.</p>
+    </td>
+    <td width="50%">
+      <img src="./docs/screenshots/route-optimization.png" alt="Route optimization screen with solver strategy and available fleet" width="100%">
+      <p align="center"><strong>Route optimization</strong><br>Select an objective and prepare an OR-Tools route proposal.</p>
+    </td>
+  </tr>
+</table>
 
 ## Architecture and request flow
 
@@ -177,7 +205,9 @@ Rider offer estimates use configurable demo rates. The displayed solo estimate a
 |   |   `-- schemas.py             # Pydantic request schemas and validation
 |   |-- requirements.txt
 |   `-- tests/test_optimizer.py    # Optimizer tests
+|-- docs/screenshots/              # README product screenshots
 |-- scripts/run-optimizer.js       # Starts Uvicorn with the selected Python
+|-- logo.svg                       # Project logo used in this README
 |-- .env.example                   # Local configuration template
 |-- package.json                   # Workspace scripts
 `-- README.md
